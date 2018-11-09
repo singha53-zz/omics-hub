@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 // simple API end point
 app.get('/api/msg', (req, res) => {
-  const msg = 'LEARN REACT';
+  const msg = 'learn react';
   res.json(msg)
 });
 
