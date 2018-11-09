@@ -22,7 +22,24 @@ import ProductSection from "./Sections/ProductSection.jsx";
 import TeamSection from "./Sections/TeamSection.jsx";
 import WorkSection from "./Sections/WorkSection.jsx";
 
-const dashboardRoutes = [];
+import Dashboard from "@material-ui/icons/Dashboard";
+import Person from "@material-ui/icons/Person";
+import DashboardPage from "views/Dashboard/Dashboard.jsx";
+import UserProfile from "views/UserProfile/UserProfile.jsx";
+const dashboardRoutes = [{
+    path: "/dashboard",
+    sidebarName: "Dashboard",
+    navbarName: "Material Dashboard",
+    icon: Dashboard,
+    component: DashboardPage
+  },
+  {
+    path: "/user",
+    sidebarName: "User Profile",
+    navbarName: "Profile",
+    icon: Person,
+    component: UserProfile
+  }];
 
 class LandingPage extends React.Component {
   render() {
@@ -53,7 +70,7 @@ class LandingPage extends React.Component {
                 <Button
                   color="success"
                   size="lg"
-                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                  href="/dashboard"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
