@@ -6,8 +6,6 @@
   "author": "Amrit Singh <Amrit.Singh@hli.ubc.ca>",
   "license": "MIT",
   "dependencies": {
-    "@material-ui/core": "^3.4.0",
-    "@material-ui/icons": "^3.0.1",
     "express": "^4.16.4",
     "path": "^0.12.7"
   },
