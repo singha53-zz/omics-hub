@@ -5,7 +5,6 @@ import classNames from "classnames";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 // @material-ui/icons
-import Dashboard from "@material-ui/icons/Dashboard";
 
 // core components
 import Header from "components/Header/Header.jsx";
