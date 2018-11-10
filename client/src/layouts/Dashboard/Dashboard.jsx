@@ -13,6 +13,7 @@ import Footer from "components/Dashboard/Footer/Footer.jsx";
 import Sidebar from "components/Dashboard/Sidebar/Sidebar.jsx";
 
 import dashboardRoutes from "routes/dashboard.jsx";
+console.log(dashboardRoutes)
 
 import dashboardStyle from "assets/jss/layouts/dashboardStyle.jsx";
 
@@ -71,7 +72,7 @@ class App extends React.Component {
       <div className={classes.wrapper}>
         <Sidebar
           routes={dashboardRoutes}
-          logoText={"Creative Tim"}
+          logoText={"Omics Hub"}
           logo={logo}
           image={image}
           handleDrawerToggle={this.handleDrawerToggle}
