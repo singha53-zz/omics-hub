@@ -71,7 +71,6 @@ class LandingPage extends React.Component {
                   color="success"
                   size="lg"
                   href="/dashboard"
-                  target="_blank"
                   rel="noopener noreferrer"
                 >
                   <i className="fas fa-table" />Analyze my data
