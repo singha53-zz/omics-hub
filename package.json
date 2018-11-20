@@ -2,6 +2,10 @@
   "name": "omics-hub",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": "8.12.0",
+    "npm": "6.4.1"
+  },
   "repository": "https://github.com/singha53/omics-hub.git",
   "author": "Amrit Singh <Amrit.Singh@hli.ubc.ca>",
   "license": "MIT",
