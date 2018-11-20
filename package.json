@@ -15,6 +15,9 @@
   },
   "scripts": {
     "start": "node server.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "NODE_ENV=test mocha -u tdd --reporter spec --exit",
     "heroku-postbuild": "cd client && yarn && yarn run build"
   }
