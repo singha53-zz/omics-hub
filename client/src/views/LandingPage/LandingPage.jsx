@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from 'react-redux';
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
@@ -42,6 +43,17 @@ const dashboardRoutes = [{
   }];
 
 class LandingPage extends React.Component {
+  directUser() {
+    switch (this.props.auth) {
+      case null:
+        return;
+      case false:
+        return "/auth/google"
+      default:
+        return "/dashboard"
+    }
+  }
+
   render() {
     const { classes, ...rest } = this.props;
     return (
@@ -70,7 +82,7 @@ class LandingPage extends React.Component {
                 <Button
                   color="success"
                   size="lg"
-                  href="/dashboard"
+                  href={ this.directUser() }
                   rel="noopener noreferrer"
                 >
                   <i className="fas fa-table" />Analyze my data
@@ -92,4 +104,8 @@ class LandingPage extends React.Component {
   }
 }
 
-export default withStyles(landingPageStyle)(LandingPage);
+function mapStateToProps({ auth }) {
+  return { auth }
+}
+
+export default connect(mapStateToProps)(withStyles(landingPageStyle)(LandingPage));
