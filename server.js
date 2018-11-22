@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
-const path = require('path');
 require('./models/User.js');
 require('./services/passport');
 
@@ -26,19 +25,16 @@ app.use(passport.session());
 // use auth routes
 require('./routes/authRoutes')(app);
 
-// Serve React build
-app.use(express.static(path.join(__dirname, 'client/build')));
+if (process.env.NODE_ENV === "production"){
+  // Serve React build
+  app.use(express.static(path.join(__dirname, 'client/build')));
 
-// simple API end point
-app.get('/api/msg', (req, res) => {
-  const msg = 'learn react';
-  res.json(msg)
-});
-
-// catch all handler
-app.get('*', (req, res) => {
+  // catch all handler
+  const path = require('path');
+  app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
+}
 
 // listen to port
 const PORT = process.env.PORT || 5000;
