@@ -157,9 +157,9 @@ class HeaderLinks extends React.Component {
           aria-label="Person"
           className={classes.buttonLink}
         >
-          <a href="/login">
-            <Person className={classes.icons} />
-          </a>
+            <a href="/api/logout">
+              <Person className={classes.icons} />
+            </a>
           <Hidden mdUp implementation="css">
             <p className={classes.linkText}>Profile</p>
           </Hidden>
