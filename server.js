@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/User.js');
 require('./services/passport');
@@ -11,6 +12,7 @@ var MONGODB_URI = process.env.MONGODB_URI || keys.mongoURI;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 const app = express();
+app.use(bodyParser.json())
 
 // make use of cookies in app
 app.use(
@@ -24,6 +26,7 @@ app.use(passport.session());
 
 // use auth routes
 require('./routes/authRoutes')(app);
+require('./routes/dashboardRoutes')(app);
 
 if (process.env.NODE_ENV === "production"){
   // Serve React build
