@@ -1,5 +1,7 @@
 import React from "react";
+import { connect } from 'react-redux'
 import PropTypes from "prop-types";
+import Plot from 'react-plotly.js';
 // react plugin for creating charts
 import ChartistGraph from "react-chartist";
 // @material-ui/core
@@ -31,6 +33,7 @@ import CardBody from "components/Dashboard/Card/CardBody.jsx";
 import CardFooter from "components/Dashboard/Card/CardFooter.jsx";
 
 import { bugs, website, server } from "variables/general.jsx";
+import * as actions from 'actions'
 
 import {
   dailySalesChart,
@@ -41,6 +44,7 @@ import {
 import dashboardStyle from "assets/jss/views/dashboardStyle.jsx";
 
 class Dashboard extends React.Component {
+
   state = {
     value: 0
   };
@@ -51,8 +55,51 @@ class Dashboard extends React.Component {
   handleChangeIndex = index => {
     this.setState({ value: index });
   };
+
+  n() {
+    return this.props.auth ? this.props.auth.analysis.n : ''
+  }
+
+  p() {
+    return this.props.auth ? this.props.auth.analysis.p : ''
+  }
+
+  var() {
+    return this.props.auth ? this.props.auth.analysis.var : ''
+  }
+
+  acc() {
+    return this.props.auth ? this.props.auth.analysis.accuracy : ''
+  }
+
+  var_prop(){
+    return this.props.auth ? this.props.auth.analysis.var_prop : ''
+  }
+
+  features(){
+    return this.props.auth ? this.props.auth.analysis.features : ''
+  }
+
+  loadings(){
+    return this.props.auth ? this.props.auth.analysis.loadings : ''
+  }
+
+  compOne_gpOne() {
+    return this.props.auth ? this.props.auth.analysis.comps.gpOne.compOne : ''
+  }
+  compOne_gpTwo() {
+    return this.props.auth ? this.props.auth.analysis.comps.gpTwo.compOne : ''
+  }
+  compTwo_gpOne() {
+    return this.props.auth ? this.props.auth.analysis.comps.gpOne.compTwo : ''
+  }
+  compTwo_gpTwo() {
+    return this.props.auth ? this.props.auth.analysis.comps.gpTwo.compTwo : ''
+  }
+
   render() {
     const { classes } = this.props;
+
     return (
       <div>
         <GridContainer>
@@ -62,9 +109,9 @@ class Dashboard extends React.Component {
                 <CardIcon color="warning">
                   <Icon>content_copy</Icon>
                 </CardIcon>
-                <p className={classes.cardCategory}>Used Space</p>
+                <p className={classes.cardCategory}>Samples</p>
                 <h3 className={classes.cardTitle}>
-                  49/50 <small>GB</small>
+                  {this.n()} <small>variables</small>
                 </h3>
               </CardHeader>
               <CardFooter stats>
@@ -85,8 +132,8 @@ class Dashboard extends React.Component {
                 <CardIcon color="success">
                   <Store />
                 </CardIcon>
-                <p className={classes.cardCategory}>Revenue</p>
-                <h3 className={classes.cardTitle}>$34,245</h3>
+                <p className={classes.cardCategory}>Variables</p>
+                <h3 className={classes.cardTitle}>{this.p()}</h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
@@ -102,8 +149,8 @@ class Dashboard extends React.Component {
                 <CardIcon color="danger">
                   <Icon>info_outline</Icon>
                 </CardIcon>
-                <p className={classes.cardCategory}>Fixed Issues</p>
-                <h3 className={classes.cardTitle}>75</h3>
+                <p className={classes.cardCategory}>Prop. Var. Exp.</p>
+                <h3 className={classes.cardTitle}>{this.var()}</h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
@@ -119,8 +166,8 @@ class Dashboard extends React.Component {
                 <CardIcon color="info">
                   <Accessibility />
                 </CardIcon>
-                <p className={classes.cardCategory}>Followers</p>
-                <h3 className={classes.cardTitle}>+245</h3>
+                <p className={classes.cardCategory}>KNN-Accuray</p>
+                <h3 className={classes.cardTitle}>{this.acc()}</h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
@@ -135,13 +182,27 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader color="success">
-                <ChartistGraph
+              {this.props.auth ?
+              <Plot 
+        data={[
+          {
+            x: ['PC1','PC2','PC3','PC4','PC5'],
+            y: this.var_prop(),
+            type: 'scatter',
+            mode: 'lines+points',
+            marker: {color: 'gray'},
+          },
+          {type: 'bar', x: ['PC1','PC2','PC3','PC4','PC5'], y: this.var_prop()},
+        ]}
+        layout={{width: 350, height: 240, title: 'Scree plot',autosize: true, margin: {l: 50,r: 30, b: 50, t: 30, pad: 1}}}
+      /> : <ChartistGraph
                   className="ct-chart"
                   data={dailySalesChart.data}
                   type="Line"
                   options={dailySalesChart.options}
                   listener={dailySalesChart.animation}
                 />
+              }
               </CardHeader>
               <CardBody>
                 <h4 className={classes.cardTitle}>Daily Sales</h4>
@@ -162,6 +223,24 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader color="warning">
+              {/* Component plots */}
+              { this.props.auth ?
+
+<Plot 
+        data={[
+          {
+            x: this.compOne_gpOne(),
+            y: this.compTwo_gpOne(),
+            type: 'scatter',
+            mode: 'markers',
+            marker: {color: 'red'},
+          },
+          {type: 'scatter', mode: 'markers', x: this.compOne_gpTwo(), y: this.compTwo_gpTwo(), marker: {color: 'blue'}},
+        ]}
+        layout={{width: 350, height: 240, title: 'Sample clustering',autosize: true, margin: {l: 50,r: 30, b: 50, t: 30, pad: 1}}}
+      />
+
+              :
                 <ChartistGraph
                   className="ct-chart"
                   data={emailsSubscriptionChart.data}
@@ -170,6 +249,7 @@ class Dashboard extends React.Component {
                   responsiveOptions={emailsSubscriptionChart.responsiveOptions}
                   listener={emailsSubscriptionChart.animation}
                 />
+                }
               </CardHeader>
               <CardBody>
                 <h4 className={classes.cardTitle}>Email Subscriptions</h4>
@@ -187,13 +267,27 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader color="danger">
-                <ChartistGraph
+                              {this.props.auth ?
+              <Plot 
+        data={[
+          {
+            x: this.features(),
+            y: this.loadings(),
+            type: 'scatter',
+            mode: 'lines+points',
+            marker: {color: 'red'},
+          },
+          {type: 'bar', x: this.features(), y: this.loadings()},
+        ]}
+        layout={{width: 350, height: 240, title: 'Variable importance',autosize: true, margin: {l: 50,r: 30, b: 50, t: 30, pad: 1}}}
+      /> : <ChartistGraph
                   className="ct-chart"
                   data={completedTasksChart.data}
                   type="Line"
                   options={completedTasksChart.options}
                   listener={completedTasksChart.animation}
                 />
+              }
               </CardHeader>
               <CardBody>
                 <h4 className={classes.cardTitle}>Completed Tasks</h4>
@@ -283,4 +377,8 @@ Dashboard.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(dashboardStyle)(Dashboard);
+function mapStateToProps({ auth }) {
+  return { auth }
+}
+
+export default connect(mapStateToProps)(withStyles(dashboardStyle)(Dashboard));
