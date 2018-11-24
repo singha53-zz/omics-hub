@@ -1,16 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { FileUpload } from 'redux-file-upload';
 import { Field, reduxForm } from 'redux-form';
-import { withRouter } from 'react-router-dom';
-import * as actions from 'actions';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
-import InputLabel from '@material-ui/core/InputLabel';
-// core components
 import GridItem from 'components/Dashboard/Grid/GridItem.jsx';
 import GridContainer from 'components/Dashboard/Grid/GridContainer.jsx';
-import CustomInput from 'components/Dashboard/CustomInput/CustomInput.jsx';
 import Button from 'components/Dashboard/CustomButtons/Button.jsx';
 import Card from 'components/Dashboard/Card/Card.jsx';
 import CardHeader from 'components/Dashboard/Card/CardHeader.jsx';
@@ -20,7 +13,6 @@ import CardFooter from 'components/Dashboard/Card/CardFooter.jsx';
 
 import avatar from 'assets/img/faces/marc.jpg';
 import Csv from 'views/DataInput/CSVinput';
-import MyCustomInput from 'views/DataInput/MyCustomInput';
 
 const styles = {
   cardCategoryWhite: {
@@ -50,7 +42,7 @@ const renderField = (field) => (
     </div>
   )
 
-  const { classes, handleSubmit, meta } = props;
+  const { classes, handleSubmit } = props;
   return (
     <form onSubmit={handleSubmit}>
       <GridContainer>

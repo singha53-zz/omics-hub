@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import CSVReader from 'react-csv-reader';
 
 class Csv extends Component {
