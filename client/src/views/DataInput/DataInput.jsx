@@ -1,7 +1,6 @@
-import React, {Component} from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { reduxForm } from 'redux-form'
 import * as actions from 'actions';
 import withStyles from '@material-ui/core/styles/withStyles';
 
@@ -35,4 +34,4 @@ const DataInput = ({ submitDataForm, history }) => {
     )
 }
 
-export default connect(null, actions)(withRouter(DataInput));
+export default connect(null, actions)(withRouter(withStyles(styles)(DataInput)));

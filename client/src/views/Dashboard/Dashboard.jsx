@@ -33,7 +33,6 @@ import CardBody from "components/Dashboard/Card/CardBody.jsx";
 import CardFooter from "components/Dashboard/Card/CardFooter.jsx";
 
 import { bugs, website, server } from "variables/general.jsx";
-import * as actions from 'actions'
 
 import {
   dailySalesChart,
@@ -57,44 +56,44 @@ class Dashboard extends React.Component {
   };
 
   n() {
-    return this.props.auth ? this.props.auth.analysis.n : ''
+    return this.props.auth && this.props.auth.analysis  ? this.props.auth.analysis.n : ''
   }
 
   p() {
-    return this.props.auth ? this.props.auth.analysis.p : ''
+    return this.props.auth && this.props.auth.analysis ? this.props.auth.analysis.p : ''
   }
 
   var() {
-    return this.props.auth ? this.props.auth.analysis.var : ''
+    return this.props.auth && this.props.auth.analysis ? this.props.auth.analysis.var : ''
   }
 
   acc() {
-    return this.props.auth ? this.props.auth.analysis.accuracy : ''
+    return this.props.auth && this.props.auth.analysis ? this.props.auth.analysis.accuracy : ''
   }
 
   var_prop(){
-    return this.props.auth ? this.props.auth.analysis.var_prop : ''
+    return this.props.auth && this.props.auth.analysis ? this.props.auth.analysis.var_prop : ''
   }
 
   features(){
-    return this.props.auth ? this.props.auth.analysis.features : ''
+    return this.props.auth && this.props.auth.analysis ? this.props.auth.analysis.features : ''
   }
 
   loadings(){
-    return this.props.auth ? this.props.auth.analysis.loadings : ''
+    return this.props.auth && this.props.auth.analysis ? this.props.auth.analysis.loadings : ''
   }
 
   compOne_gpOne() {
-    return this.props.auth ? this.props.auth.analysis.comps.gpOne.compOne : ''
+    return this.props.auth && this.props.auth.analysis ? this.props.auth.analysis.comps.gpOne.compOne : ''
   }
   compOne_gpTwo() {
-    return this.props.auth ? this.props.auth.analysis.comps.gpTwo.compOne : ''
+    return this.props.auth && this.props.auth.analysis ? this.props.auth.analysis.comps.gpTwo.compOne : ''
   }
   compTwo_gpOne() {
-    return this.props.auth ? this.props.auth.analysis.comps.gpOne.compTwo : ''
+    return this.props.auth && this.props.auth.analysis ? this.props.auth.analysis.comps.gpOne.compTwo : ''
   }
   compTwo_gpTwo() {
-    return this.props.auth ? this.props.auth.analysis.comps.gpTwo.compTwo : ''
+    return this.props.auth && this.props.auth.analysis ? this.props.auth.analysis.comps.gpTwo.compTwo : ''
   }
 
   render() {
@@ -182,7 +181,7 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader color="success">
-              {this.props.auth ?
+              {this.props.auth && this.props.auth.analysis ?
               <Plot 
         data={[
           {
@@ -224,7 +223,7 @@ class Dashboard extends React.Component {
             <Card chart>
               <CardHeader color="warning">
               {/* Component plots */}
-              { this.props.auth ?
+              { this.props.auth && this.props.auth.analysis ?
 
 <Plot 
         data={[
@@ -267,7 +266,7 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader color="danger">
-                              {this.props.auth ?
+                              {this.props.auth && this.props.auth.analysis ?
               <Plot 
         data={[
           {
