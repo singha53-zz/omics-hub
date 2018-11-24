@@ -7,12 +7,12 @@ const ConfusionMatrix = require('ml-confusion-matrix');
 const { Matrix } = require('ml-matrix');
 const _ = require('underscore')
 
-function subsetArr(labels, class) {
+function subsetArr(labels, group) {
   let indices = [];
-  let idx = labels.indexOf(class);
+  let idx = labels.indexOf(group);
   while (idx != -1) {
   indices.push(idx);
-  idx = labels.indexOf(class, idx + 1);
+  idx = labels.indexOf(group, idx + 1);
   }
   return indices
 }
@@ -40,7 +40,7 @@ module.exports = app => {
     const pca = new PCA(X.slice(1, X.length-1), 
       { center: true, scale: true });
     // Proportion of variation explained
-    analysis.var_prop = pca.getExplainedVariance();
+    analysis.var_prop = pca.getExplainedVariance().splice(0,6);
     analysis.var = Math.round(100*(analysis.var_prop[0]+analysis.var_prop[1]))+'%';
     // loadings
     let loadings = pca.U.map(d => d[0])
@@ -60,14 +60,11 @@ module.exports = app => {
     const comps = pca.predict(X)
     const compOne = comps.map(d => d[0])
     const compTwo = comps.map(d => d[1])
+
     analysis.comps = {
       gpOne:{compOne:subsetArr(y, 0).map(d => compOne[d]), compTwo:subsetArr(y, 0).map(d => compTwo[d])},
       gpTwo:{compOne:subsetArr(y, 1).map(d => compOne[d]), compTwo:subsetArr(y, 1).map(d => compTwo[d])}
     }
-    console.log(analysis.comps.gpOne.comp1)
-
-
-
 
 // var foo = new Array(analysis.n);
 // foo.map(d => console.log(d))

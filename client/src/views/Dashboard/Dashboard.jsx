@@ -72,6 +72,10 @@ class Dashboard extends React.Component {
     return this.props.auth ? this.props.auth.analysis.accuracy : ''
   }
 
+  var_prop(){
+    return this.props.auth ? this.props.auth.analysis.var_prop : ''
+  }
+
   features(){
     this.props.auth ? console.log(this.props.auth.analysis.features) : console.log('');
     return this.props.auth ? this.props.auth.analysis.features : ''
@@ -81,12 +85,17 @@ class Dashboard extends React.Component {
     return this.props.auth ? this.props.auth.analysis.loadings : ''
   }
 
-  comp1(){
-    return this.props.auth ? this.props.auth.analysis.comp2 : ''
+  compOne_gpOne() {
+    return this.props.auth ? this.props.auth.analysis.comps.gpOne.compOne : ''
   }
-
-   comp2(){
-    return this.props.auth ? this.props.auth.analysis.comp2 : ''
+  compOne_gpTwo() {
+    return this.props.auth ? this.props.auth.analysis.comps.gpTwo.compOne : ''
+  }
+  compTwo_gpOne() {
+    return this.props.auth ? this.props.auth.analysis.comps.gpOne.compTwo : ''
+  }
+  compTwo_gpTwo() {
+    return this.props.auth ? this.props.auth.analysis.comps.gpTwo.compTwo : ''
   }
 
   render() {
@@ -178,15 +187,15 @@ class Dashboard extends React.Component {
               <Plot 
         data={[
           {
-            x: this.features(),
-            y: this.loadings(),
+            x: ['PC1','PC2','PC3','PC4','PC5'],
+            y: this.var_prop(),
             type: 'scatter',
             mode: 'lines+points',
-            marker: {color: 'red'},
+            marker: {color: 'gray'},
           },
-          {type: 'bar', x: this.features(), y: this.loadings()},
+          {type: 'bar', x: ['PC1','PC2','PC3','PC4','PC5'], y: this.var_prop()},
         ]}
-        layout={{width: 350, height: 240, title: 'Variable importance',autosize: true, margin: {l: 50,r: 10, b: 50, t: 30, pad: 1}}}
+        layout={{width: 350, height: 240, title: 'Scree plo',autosize: true, margin: {l: 50,r: 30, b: 50, t: 30, pad: 1}}}
       /> : <ChartistGraph
                   className="ct-chart"
                   data={dailySalesChart.data}
@@ -221,15 +230,15 @@ class Dashboard extends React.Component {
 <Plot 
         data={[
           {
-            x: this.comp1(),
-            y: this.comp2(),
+            x: this.compOne_gpOne(),
+            y: this.compTwo_gpOne(),
             type: 'scatter',
             mode: 'markers',
             marker: {color: 'red'},
           },
-          {type: 'scatter', mode: 'markers', x: this.comp1().splice(7,14), y: this.comp2().splice(7,14), marker: {color: 'blue'}},
+          {type: 'scatter', mode: 'markers', x: this.compOne_gpTwo(), y: this.compTwo_gpTwo(), marker: {color: 'blue'}},
         ]}
-        layout={{width: 350, height: 240, title: 'Sample clustering',autosize: true, margin: {l: 50,r: 10, b: 50, t: 30, pad: 1}}}
+        layout={{width: 350, height: 240, title: 'Sample clustering',autosize: true, margin: {l: 50,r: 30, b: 50, t: 30, pad: 1}}}
       />
 
               :
@@ -259,13 +268,27 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader color="danger">
-                <ChartistGraph
+                              {this.props.auth ?
+              <Plot 
+        data={[
+          {
+            x: this.features(),
+            y: this.loadings(),
+            type: 'scatter',
+            mode: 'lines+points',
+            marker: {color: 'red'},
+          },
+          {type: 'bar', x: this.features(), y: this.loadings()},
+        ]}
+        layout={{width: 350, height: 240, title: 'Variable importance',autosize: true, margin: {l: 50,r: 30, b: 50, t: 30, pad: 1}}}
+      /> : <ChartistGraph
                   className="ct-chart"
                   data={completedTasksChart.data}
                   type="Line"
                   options={completedTasksChart.options}
                   listener={completedTasksChart.animation}
                 />
+              }
               </CardHeader>
               <CardBody>
                 <h4 className={classes.cardTitle}>Completed Tasks</h4>
