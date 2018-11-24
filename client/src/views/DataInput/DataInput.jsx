@@ -28,26 +28,11 @@ const styles = {
 
 const DataInput = ({ submitDataForm, history }) => {
 
-  const submit = values => {
-    console.log(values)
-  }
-
     return (
     <FormComp onSubmit={data => {
       submitDataForm(data, history)
     }} />
     )
-}
-
-
-function mapStateToProps(state) {
-  if(state.form.datainput !== undefined){
-      console.log(state.form.datainput.values)
-  }
-  // shows up as props
-  // return {
-  //   formValues: state.form.datainput.values 
-  // }
 }
 
 export default connect(null, actions)(withRouter(DataInput));

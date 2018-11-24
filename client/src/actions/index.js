@@ -8,7 +8,6 @@ export const fetchUser = () => async dispatch => {
 
 export const submitDataForm = (values, history) => async dispatch => {
   const res = await axios.post('/api/analyze', values)
-  console.log(res)
   history.push('/dashboard')
   dispatch({ type: FETCH_USER, payload: res.data})
 };

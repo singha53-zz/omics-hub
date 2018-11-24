@@ -11,12 +11,10 @@ class Csv extends Component {
     const {
       input: { value, onChange }
     } = this.props;
-    console.log(this.props);
     return (
       <CSVReader
         cssClass="csv-input"
         onFileLoaded={e => {
-          console.log(e)
           onChange(value.concat(JSON.stringify(e)));
         }}
         onError={this.err}

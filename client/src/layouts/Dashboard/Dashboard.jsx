@@ -13,7 +13,6 @@ import Footer from "components/Dashboard/Footer/Footer.jsx";
 import Sidebar from "components/Dashboard/Sidebar/Sidebar.jsx";
 
 import dashboardRoutes from "routes/dashboard.jsx";
-console.log(dashboardRoutes)
 
 import dashboardStyle from "assets/jss/layouts/dashboardStyle.jsx";
 

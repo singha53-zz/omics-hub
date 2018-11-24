@@ -42,8 +42,15 @@ const styles = {
 };
 
 function UserProfile(props) {
-  const { classes, handleSubmit } = props;
-  console.log(props)
+const renderField = (field) => (
+    <div className="input-row">
+      <input {...field.input} type="text"/>
+      {field.meta.touched && field.meta.error && 
+       <span className="error" style={{color: 'red'}}>{field.meta.error}</span>}
+    </div>
+  )
+
+  const { classes, handleSubmit, meta } = props;
   return (
     <form onSubmit={handleSubmit}>
       <GridContainer>
@@ -60,13 +67,13 @@ function UserProfile(props) {
                 <GridItem xs={12} sm={12} md={6}>
                   <div>
                     <label htmlFor="study">Study</label>
-                    <Field name="study" component="input" type="text" />
-                  </div>
+                    <Field name="study" component={renderField} />
+                    </div>
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
                   <div>
                     <label htmlFor="disease">Disease</label>
-                    <Field name="disease" component="input" type="text" />
+                    <Field name="disease" component={renderField}  />
                   </div>
                 </GridItem>
               </GridContainer>
@@ -74,13 +81,13 @@ function UserProfile(props) {
                 <GridItem xs={12} sm={12} md={6}>
                   <div>
                     <label htmlFor="tech">Technology</label>
-                    <Field name="tech" component="input" type="text" />
+                    <Field name="tech" component={renderField} />
                   </div>
                 </GridItem>
                 <GridItem xs={12} sm={12} md={6}>
                   <div>
                     <label htmlFor="tiss">Tissue</label>
-                    <Field name="tiss" component="input" type="text" />
+                    <Field name="tiss" component={renderField} />
                   </div>
                 </GridItem>
               </GridContainer>
@@ -131,7 +138,15 @@ function UserProfile(props) {
 }
 
 function validate(values) {
-  const errors = {}
+  const errors = {};
+
+  ['study','disease','tech','tiss','exp','res'].forEach( ( name ) => {
+    if( !values[name] ){
+      errors[name] = `You must provide a ${name}`
+    }
+  });
+
+  return errors;
 }
 
 export default reduxForm({

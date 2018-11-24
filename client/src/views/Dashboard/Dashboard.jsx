@@ -77,7 +77,6 @@ class Dashboard extends React.Component {
   }
 
   features(){
-    this.props.auth ? console.log(this.props.auth.analysis.features) : console.log('');
     return this.props.auth ? this.props.auth.analysis.features : ''
   }
 
@@ -100,7 +99,7 @@ class Dashboard extends React.Component {
 
   render() {
     const { classes } = this.props;
-    this.props.auth ? console.log(this.props.auth.n) : console.log('')
+
     return (
       <div>
         <GridContainer>
@@ -379,7 +378,6 @@ Dashboard.propTypes = {
 };
 
 function mapStateToProps({ auth }) {
-  console.log(auth)
   return { auth }
 }
 
