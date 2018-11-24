@@ -19,8 +19,8 @@ import CardBody from 'components/Dashboard/Card/CardBody.jsx';
 import CardFooter from 'components/Dashboard/Card/CardFooter.jsx';
 
 import avatar from 'assets/img/faces/marc.jpg';
-import Csv from 'views/Maps/CSVinput';
-import MyCustomInput from 'views/Maps/MyCustomInput';
+import Csv from 'views/DataInput/CSVinput';
+import MyCustomInput from 'views/DataInput/MyCustomInput';
 
 const styles = {
   cardCategoryWhite: {

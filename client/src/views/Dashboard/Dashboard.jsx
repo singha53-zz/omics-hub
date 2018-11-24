@@ -195,7 +195,7 @@ class Dashboard extends React.Component {
           },
           {type: 'bar', x: ['PC1','PC2','PC3','PC4','PC5'], y: this.var_prop()},
         ]}
-        layout={{width: 350, height: 240, title: 'Scree plo',autosize: true, margin: {l: 50,r: 30, b: 50, t: 30, pad: 1}}}
+        layout={{width: 350, height: 240, title: 'Scree plot',autosize: true, margin: {l: 50,r: 30, b: 50, t: 30, pad: 1}}}
       /> : <ChartistGraph
                   className="ct-chart"
                   data={dailySalesChart.data}

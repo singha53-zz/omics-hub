@@ -5,7 +5,7 @@ import { reduxForm } from 'redux-form'
 import * as actions from 'actions';
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import FormComp from 'views/Maps/FormComp'
+import FormComp from 'views/DataInput/FormComp'
 
 const styles = {
   cardCategoryWhite: {
@@ -26,7 +26,7 @@ const styles = {
   }
 };
 
-const Maps = ({ submitDataForm, history }) => {
+const DataInput = ({ submitDataForm, history }) => {
 
   const submit = values => {
     console.log(values)
@@ -50,4 +50,4 @@ function mapStateToProps(state) {
   // }
 }
 
-export default connect(null, actions)(withRouter(Maps));
+export default connect(null, actions)(withRouter(DataInput));

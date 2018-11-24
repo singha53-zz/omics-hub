@@ -22,7 +22,6 @@
     "react-chartist": "^0.13.1",
     "react-csv-reader": "^1.1.0",
     "react-dom": "^16.6.1",
-    "react-google-maps": "^9.4.5",
     "react-plotly.js": "^2.2.0",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
