@@ -3904,50 +3904,62 @@ class Dashboard extends React.Component {
       : '';
   }
 
-  acc() {
+  perf() {
     return this.props.auth && this.props.auth.analysis
-      ? this.props.auth.analysis.accuracy
+      ? this.props.auth.analysis.perf
       : '';
   }
 
-  var_prop() {
+  scatterData() {
     return this.props.auth && this.props.auth.analysis
-      ? this.props.auth.analysis.var_prop
+      ? this.props.auth.analysis.scatterData
       : '';
   }
 
-  features() {
-    return this.props.auth && this.props.auth.analysis
-      ? this.props.auth.analysis.features
-      : '';
-  }
+  // acc() {
+  //   return this.props.auth && this.props.auth.analysis
+  //     ? this.props.auth.analysis.accuracy
+  //     : '';
+  // }
 
-  loadings() {
-    return this.props.auth && this.props.auth.analysis
-      ? this.props.auth.analysis.loadings
-      : '';
-  }
+  // var_prop() {
+  //   return this.props.auth && this.props.auth.analysis
+  //     ? this.props.auth.analysis.var_prop
+  //     : '';
+  // }
 
-  compOne_gpOne() {
-    return this.props.auth && this.props.auth.analysis
-      ? this.props.auth.analysis.comps.gpOne.compOne
-      : '';
-  }
-  compOne_gpTwo() {
-    return this.props.auth && this.props.auth.analysis
-      ? this.props.auth.analysis.comps.gpTwo.compOne
-      : '';
-  }
-  compTwo_gpOne() {
-    return this.props.auth && this.props.auth.analysis
-      ? this.props.auth.analysis.comps.gpOne.compTwo
-      : '';
-  }
-  compTwo_gpTwo() {
-    return this.props.auth && this.props.auth.analysis
-      ? this.props.auth.analysis.comps.gpTwo.compTwo
-      : '';
-  }
+  // features() {
+  //   return this.props.auth && this.props.auth.analysis
+  //     ? this.props.auth.analysis.features
+  //     : '';
+  // }
+
+  // loadings() {
+  //   return this.props.auth && this.props.auth.analysis
+  //     ? this.props.auth.analysis.loadings
+  //     : '';
+  // }
+
+  // compOne_gpOne() {
+  //   return this.props.auth && this.props.auth.analysis
+  //     ? this.props.auth.analysis.comps.gpOne.compOne
+  //     : '';
+  // }
+  // compOne_gpTwo() {
+  //   return this.props.auth && this.props.auth.analysis
+  //     ? this.props.auth.analysis.comps.gpTwo.compOne
+  //     : '';
+  // }
+  // compTwo_gpOne() {
+  //   return this.props.auth && this.props.auth.analysis
+  //     ? this.props.auth.analysis.comps.gpOne.compTwo
+  //     : '';
+  // }
+  // compTwo_gpTwo() {
+  //   return this.props.auth && this.props.auth.analysis
+  //     ? this.props.auth.analysis.comps.gpTwo.compTwo
+  //     : '';
+  // }
 
   render() {
     const { classes } = this.props;
@@ -4014,13 +4026,13 @@ class Dashboard extends React.Component {
                 <CardIcon color="info">
                   <Accessibility />
                 </CardIcon>
-                <p className={classes.cardCategory}>KNN-Accuray</p>
-                <h3 className={classes.cardTitle}>{this.acc()}</h3>
+                <p className={classes.cardCategory}>Performance</p>
+                <h3 className={classes.cardTitle}>{this.perf()}</h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <Update />
-                  Just Updated
+                  Sensitivity/Specificity
                 </div>
               </CardFooter>
             </Card>
@@ -4107,17 +4119,14 @@ class Dashboard extends React.Component {
                 </div>
               </CardHeader>
               <CardBody>
-                <h4 className={classes.cardTitle}>Daily Sales</h4>
+                <h4 className={classes.cardTitle}>Sample clutering</h4>
                 <p className={classes.cardCategory}>
-                  <span className={classes.successText}>
-                    <ArrowUpward className={classes.upArrowCardCategory} /> 55%
-                  </span>{' '}
-                  increase in today sales.
+                  Based on Principal Component Analysis.
                 </p>
               </CardBody>
               <CardFooter chart>
                 <div className={classes.stats}>
-                  <AccessTime /> updated 4 minutes ago
+                  <AccessTime /> updated 30 seconds ago
                 </div>
               </CardFooter>
             </Card>
@@ -4242,14 +4251,14 @@ class Dashboard extends React.Component {
                 </div>
               </CardHeader>
               <CardBody>
-                <h4 className={classes.cardTitle}>Email Subscriptions</h4>
+                <h4 className={classes.cardTitle}>Receiver Operating Characteristic Curve</h4>
                 <p className={classes.cardCategory}>
-                  Last Campaign Performance
+                  Probability of ranking a randomly selected sample from one group higher than the other group.
                 </p>
               </CardBody>
               <CardFooter chart>
                 <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
+                  <AccessTime /> updated 30 seconds ago
                 </div>
               </CardFooter>
             </Card>
@@ -4416,14 +4425,14 @@ class Dashboard extends React.Component {
                 </div>
               </CardHeader>
               <CardBody>
-                <h4 className={classes.cardTitle}>Completed Tasks</h4>
+                <h4 className={classes.cardTitle}>Heatmap of select variables</h4>
                 <p className={classes.cardCategory}>
-                  Last Campaign Performance
+                  Correlation matrix depicting the pairwise correlation between all selected variables.
                 </p>
               </CardBody>
               <CardFooter chart>
                 <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
+                  <AccessTime /> updated 30 seconds ago
                 </div>
               </CardFooter>
             </Card>
