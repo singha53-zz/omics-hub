@@ -2643,6 +2643,239 @@ const heatmapData = [
   }
 ]
 
+const lineData = [
+  {
+    "id": "japan",
+    "color": "hsl(241, 70%, 50%)",
+    "data": [
+      {
+        "x": "plane",
+        "y": 10
+      },
+      {
+        "x": "helicopter",
+        "y": 167
+      },
+      {
+        "x": "boat",
+        "y": 268
+      },
+      {
+        "x": "train",
+        "y": 30
+      },
+      {
+        "x": "subway",
+        "y": 159
+      },
+      {
+        "x": "bus",
+        "y": 77
+      },
+      {
+        "x": "car",
+        "y": 246
+      },
+      {
+        "x": "moto",
+        "y": 281
+      },
+      {
+        "x": "bicycle",
+        "y": 231
+      },
+      {
+        "x": "others",
+        "y": 122
+      }
+    ]
+  },
+  {
+    "id": "france",
+    "color": "hsl(135, 70%, 50%)",
+    "data": [
+      {
+        "x": "plane",
+        "y": 77
+      },
+      {
+        "x": "helicopter",
+        "y": 208
+      },
+      {
+        "x": "boat",
+        "y": 105
+      },
+      {
+        "x": "train",
+        "y": 130
+      },
+      {
+        "x": "subway",
+        "y": 12
+      },
+      {
+        "x": "bus",
+        "y": 258
+      },
+      {
+        "x": "car",
+        "y": 277
+      },
+      {
+        "x": "moto",
+        "y": 147
+      },
+      {
+        "x": "bicycle",
+        "y": 236
+      },
+      {
+        "x": "others",
+        "y": 276
+      }
+    ]
+  },
+  {
+    "id": "us",
+    "color": "hsl(288, 70%, 50%)",
+    "data": [
+      {
+        "x": "plane",
+        "y": 134
+      },
+      {
+        "x": "helicopter",
+        "y": 129
+      },
+      {
+        "x": "boat",
+        "y": 53
+      },
+      {
+        "x": "train",
+        "y": 6
+      },
+      {
+        "x": "subway",
+        "y": 105
+      },
+      {
+        "x": "bus",
+        "y": 20
+      },
+      {
+        "x": "car",
+        "y": 264
+      },
+      {
+        "x": "moto",
+        "y": 25
+      },
+      {
+        "x": "bicycle",
+        "y": 266
+      },
+      {
+        "x": "others",
+        "y": 141
+      }
+    ]
+  },
+  {
+    "id": "germany",
+    "color": "hsl(237, 70%, 50%)",
+    "data": [
+      {
+        "x": "plane",
+        "y": 53
+      },
+      {
+        "x": "helicopter",
+        "y": 225
+      },
+      {
+        "x": "boat",
+        "y": 77
+      },
+      {
+        "x": "train",
+        "y": 128
+      },
+      {
+        "x": "subway",
+        "y": 257
+      },
+      {
+        "x": "bus",
+        "y": 34
+      },
+      {
+        "x": "car",
+        "y": 84
+      },
+      {
+        "x": "moto",
+        "y": 70
+      },
+      {
+        "x": "bicycle",
+        "y": 293
+      },
+      {
+        "x": "others",
+        "y": 63
+      }
+    ]
+  },
+  {
+    "id": "norway",
+    "color": "hsl(170, 70%, 50%)",
+    "data": [
+      {
+        "x": "plane",
+        "y": 67
+      },
+      {
+        "x": "helicopter",
+        "y": 178
+      },
+      {
+        "x": "boat",
+        "y": 163
+      },
+      {
+        "x": "train",
+        "y": 159
+      },
+      {
+        "x": "subway",
+        "y": 251
+      },
+      {
+        "x": "bus",
+        "y": 56
+      },
+      {
+        "x": "car",
+        "y": 164
+      },
+      {
+        "x": "moto",
+        "y": 143
+      },
+      {
+        "x": "bicycle",
+        "y": 268
+      },
+      {
+        "x": "others",
+        "y": 163
+      }
+    ]
+  }
+]
+
 class Dashboard extends React.Component {
   state = {
     value: 0
@@ -2919,31 +3152,105 @@ class Dashboard extends React.Component {
               <div style={styles.App}>
                 {/* Component plots */}
                 {this.props.auth && this.props.auth.analysis ? (
-                  <Plot
-                    data={[
-                      {
-                        x: this.compOne_gpOne(),
-                        y: this.compTwo_gpOne(),
-                        type: 'scatter',
-                        mode: 'markers',
-                        marker: { color: 'red' }
-                      },
-                      {
-                        type: 'scatter',
-                        mode: 'markers',
-                        x: this.compOne_gpTwo(),
-                        y: this.compTwo_gpTwo(),
-                        marker: { color: 'blue' }
-                      }
-                    ]}
-                    layout={{
-                      width: 350,
-                      height: 240,
-                      title: 'Sample clustering',
-                      autosize: true,
-                      margin: { l: 50, r: 30, b: 50, t: 30, pad: 1 }
-                    }}
-                  />
+                  <ResponsiveLine
+        data={lineData}
+        margin={{
+            "top": 50,
+            "right": 110,
+            "bottom": 50,
+            "left": 60
+        }}
+        xScale={{
+            "type": "point"
+        }}
+        yScale={{
+            "type": "linear",
+            "stacked": true,
+            "min": "auto",
+            "max": "auto"
+        }}
+        axisTop=null
+        axisRight=null
+        axisBottom={{
+            "orient": "bottom",
+            "tickSize": 5,
+            "tickPadding": 5,
+            "tickRotation": 0,
+            "legend": "transportation",
+            "legendOffset": 36,
+            "legendPosition": "middle"
+        }}
+        axisLeft={{
+            "orient": "left",
+            "tickSize": 5,
+            "tickPadding": 5,
+            "tickRotation": 0,
+            "legend": "count",
+            "legendOffset": -40,
+            "legendPosition": "middle"
+        }}
+        dotSize={10}
+        dotColor="inherit:darker(0.3)"
+        dotBorderWidth={2}
+        dotBorderColor="#ffffff"
+        enableDotLabel={true}
+        dotLabel="y"
+        dotLabelYOffset={-12}
+        animate={true}
+        motionStiffness={90}
+        motionDamping={15}
+        legends={[
+            {
+                "anchor": "bottom-right",
+                "direction": "column",
+                "justify": false,
+                "translateX": 100,
+                "translateY": 0,
+                "itemsSpacing": 0,
+                "itemDirection": "left-to-right",
+                "itemWidth": 80,
+                "itemHeight": 20,
+                "itemOpacity": 0.75,
+                "symbolSize": 12,
+                "symbolShape": "circle",
+                "symbolBorderColor": "rgba(0, 0, 0, .5)",
+                "effects": [
+                    {
+                        "on": "hover",
+                        "style": {
+                            "itemBackground": "rgba(0, 0, 0, .03)",
+                            "itemOpacity": 1
+                        }
+                    }
+                ]
+            }
+        ]}
+    />
+                  // <Plot
+                  //   data={[
+                  //     {
+                  //       x: this.compOne_gpOne(),
+                  //       y: this.compTwo_gpOne(),
+                  //       type: 'scatter',
+                  //       mode: 'markers',
+                  //       marker: { color: 'red' }
+                  //     },
+                  //     {
+                  //       type: 'scatter',
+                  //       mode: 'markers',
+                  //       x: this.compOne_gpTwo(),
+                  //       y: this.compTwo_gpTwo(),
+                  //       marker: { color: 'blue' }
+                  //     }
+                  //   ]}
+                  //   layout={{
+                  //     width: 350,
+                  //     height: 240,
+                  //     title: 'Sample clustering',
+                  //     autosize: true,
+                  //     margin: { l: 50, r: 30, b: 50, t: 30, pad: 1 }
+                  //   }}
+                  // />
                 ) : (
                   <ChartistGraph
                     className="ct-chart"
