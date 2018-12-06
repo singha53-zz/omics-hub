@@ -23,8 +23,10 @@ module.exports = app => {
   app.post('/api/analyze', requireLogin, async (req, res) => {
 
     // console.log(req.body.exp)
+    // const dataset = req.body.exp
+    // console.log(dataset.map(d => +d[0]))
     const labels = JSON.parse(req.body.labels).map(d=>d.outcome)
-    console.log(typeof(labels))
+    console.log(labels)
     const enet = await axios.post('http://localhost:8000/enet', {
       "data": JSON.parse(req.body.exp),
       "outcome": labels,
@@ -37,6 +39,17 @@ module.exports = app => {
 
 
     let analysis = {}
+    // Number of samples
+    analysis.n = labels.length
+    // Number of variables
+    const feat = Object.keys(JSON.parse(req.body.exp)[0])
+    analysis.p = feat.length
+    // Selected variable by Enet
+    
+    // AUROC
+    analysis.auc = JSON.parse(enet.data)[0].ROC
+
+
     // Analyze expression data and store results
     // Format explanatory data
     let features = JSON.parse(req.body.exp)[0]
@@ -45,11 +58,6 @@ module.exports = app => {
     // Format response data
     const y = JSON.parse(req.body.labels).map(d => +d)
     // console.log(X, y)
-
-    // Number of samples
-    analysis.n = X.length
-    // Number of variables
-    analysis.p = X[0].length
 
     // Run PCA
     const pca = new PCA(X.slice(1, X.length-1), 

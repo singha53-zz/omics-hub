@@ -44,6 +44,8 @@ import dashboardStyle from 'assets/jss/views/dashboardStyle.jsx';
 
 import { ResponsiveBar } from '@nivo/bar';
 import { ResponsiveHeatMapCanvas } from '@nivo/heatmap'
+import { ResponsiveLine } from '@nivo/line'
+import { ResponsiveScatterPlot } from '@nivo/scatterplot'
 
 const styles = {
   cardCategoryWhite: {
@@ -72,41 +74,1031 @@ const styles = {
 					}
 };
 
-const bubbleData = [
+const scatterData = [
   {
-    "PC": "PC1",
-    "pca": 21,
-    "pcaColor": "hsl(314, 70%, 50%)"
+    "id": "group A",
+    "data": [
+      {
+        "x": 6,
+        "y": 39
+      },
+      {
+        "x": 30,
+        "y": 30
+      },
+      {
+        "x": 53,
+        "y": 3
+      },
+      {
+        "x": 54,
+        "y": 102
+      },
+      {
+        "x": 81,
+        "y": 97
+      },
+      {
+        "x": 8,
+        "y": 30
+      },
+      {
+        "x": 20,
+        "y": 41
+      },
+      {
+        "x": 15,
+        "y": 111
+      },
+      {
+        "x": 12,
+        "y": 96
+      },
+      {
+        "x": 84,
+        "y": 93
+      },
+      {
+        "x": 35,
+        "y": 15
+      },
+      {
+        "x": 20,
+        "y": 88
+      },
+      {
+        "x": 16,
+        "y": 17
+      },
+      {
+        "x": 13,
+        "y": 12
+      },
+      {
+        "x": 57,
+        "y": 113
+      },
+      {
+        "x": 47,
+        "y": 94
+      },
+      {
+        "x": 46,
+        "y": 18
+      },
+      {
+        "x": 34,
+        "y": 83
+      },
+      {
+        "x": 1,
+        "y": 77
+      },
+      {
+        "x": 72,
+        "y": 16
+      },
+      {
+        "x": 98,
+        "y": 11
+      },
+      {
+        "x": 94,
+        "y": 55
+      },
+      {
+        "x": 56,
+        "y": 41
+      },
+      {
+        "x": 14,
+        "y": 78
+      },
+      {
+        "x": 84,
+        "y": 108
+      },
+      {
+        "x": 7,
+        "y": 23
+      },
+      {
+        "x": 95,
+        "y": 19
+      },
+      {
+        "x": 4,
+        "y": 71
+      },
+      {
+        "x": 100,
+        "y": 19
+      },
+      {
+        "x": 71,
+        "y": 23
+      },
+      {
+        "x": 16,
+        "y": 115
+      },
+      {
+        "x": 25,
+        "y": 33
+      },
+      {
+        "x": 62,
+        "y": 37
+      },
+      {
+        "x": 32,
+        "y": 97
+      },
+      {
+        "x": 95,
+        "y": 35
+      },
+      {
+        "x": 24,
+        "y": 104
+      },
+      {
+        "x": 37,
+        "y": 46
+      },
+      {
+        "x": 17,
+        "y": 73
+      },
+      {
+        "x": 84,
+        "y": 76
+      },
+      {
+        "x": 86,
+        "y": 44
+      },
+      {
+        "x": 68,
+        "y": 29
+      },
+      {
+        "x": 87,
+        "y": 51
+      },
+      {
+        "x": 16,
+        "y": 30
+      },
+      {
+        "x": 18,
+        "y": 12
+      },
+      {
+        "x": 79,
+        "y": 95
+      },
+      {
+        "x": 95,
+        "y": 22
+      },
+      {
+        "x": 29,
+        "y": 63
+      },
+      {
+        "x": 4,
+        "y": 80
+      },
+      {
+        "x": 9,
+        "y": 23
+      },
+      {
+        "x": 81,
+        "y": 48
+      }
+    ]
   },
   {
-    "PC": "PC2",
-    "pca": 139,
-    "pcaColor": "hsl(147, 70%, 50%)"
+    "id": "group B",
+    "data": [
+      {
+        "x": 5,
+        "y": 73
+      },
+      {
+        "x": 57,
+        "y": 0
+      },
+      {
+        "x": 32,
+        "y": 61
+      },
+      {
+        "x": 71,
+        "y": 9
+      },
+      {
+        "x": 83,
+        "y": 59
+      },
+      {
+        "x": 7,
+        "y": 70
+      },
+      {
+        "x": 66,
+        "y": 2
+      },
+      {
+        "x": 69,
+        "y": 52
+      },
+      {
+        "x": 77,
+        "y": 46
+      },
+      {
+        "x": 20,
+        "y": 3
+      },
+      {
+        "x": 93,
+        "y": 4
+      },
+      {
+        "x": 19,
+        "y": 108
+      },
+      {
+        "x": 85,
+        "y": 47
+      },
+      {
+        "x": 32,
+        "y": 42
+      },
+      {
+        "x": 68,
+        "y": 92
+      },
+      {
+        "x": 36,
+        "y": 80
+      },
+      {
+        "x": 73,
+        "y": 85
+      },
+      {
+        "x": 69,
+        "y": 63
+      },
+      {
+        "x": 9,
+        "y": 90
+      },
+      {
+        "x": 7,
+        "y": 47
+      },
+      {
+        "x": 39,
+        "y": 25
+      },
+      {
+        "x": 61,
+        "y": 42
+      },
+      {
+        "x": 94,
+        "y": 105
+      },
+      {
+        "x": 52,
+        "y": 112
+      },
+      {
+        "x": 67,
+        "y": 42
+      },
+      {
+        "x": 94,
+        "y": 49
+      },
+      {
+        "x": 75,
+        "y": 78
+      },
+      {
+        "x": 35,
+        "y": 95
+      },
+      {
+        "x": 78,
+        "y": 61
+      },
+      {
+        "x": 68,
+        "y": 5
+      },
+      {
+        "x": 36,
+        "y": 33
+      },
+      {
+        "x": 54,
+        "y": 114
+      },
+      {
+        "x": 59,
+        "y": 110
+      },
+      {
+        "x": 55,
+        "y": 42
+      },
+      {
+        "x": 1,
+        "y": 120
+      },
+      {
+        "x": 49,
+        "y": 78
+      },
+      {
+        "x": 11,
+        "y": 120
+      },
+      {
+        "x": 99,
+        "y": 78
+      },
+      {
+        "x": 19,
+        "y": 52
+      },
+      {
+        "x": 16,
+        "y": 92
+      },
+      {
+        "x": 47,
+        "y": 28
+      },
+      {
+        "x": 100,
+        "y": 62
+      },
+      {
+        "x": 64,
+        "y": 27
+      },
+      {
+        "x": 58,
+        "y": 9
+      },
+      {
+        "x": 5,
+        "y": 12
+      },
+      {
+        "x": 64,
+        "y": 102
+      },
+      {
+        "x": 25,
+        "y": 50
+      },
+      {
+        "x": 76,
+        "y": 100
+      },
+      {
+        "x": 12,
+        "y": 11
+      },
+      {
+        "x": 40,
+        "y": 69
+      }
+    ]
   },
   {
-    "PC": "PC3",
-    "pca": 88,
-    "pcaColor": "hsl(189, 70%, 50%)"
+    "id": "group C",
+    "data": [
+      {
+        "x": 68,
+        "y": 117
+      },
+      {
+        "x": 3,
+        "y": 107
+      },
+      {
+        "x": 34,
+        "y": 34
+      },
+      {
+        "x": 52,
+        "y": 78
+      },
+      {
+        "x": 32,
+        "y": 100
+      },
+      {
+        "x": 94,
+        "y": 19
+      },
+      {
+        "x": 56,
+        "y": 116
+      },
+      {
+        "x": 67,
+        "y": 1
+      },
+      {
+        "x": 39,
+        "y": 39
+      },
+      {
+        "x": 88,
+        "y": 2
+      },
+      {
+        "x": 21,
+        "y": 36
+      },
+      {
+        "x": 93,
+        "y": 33
+      },
+      {
+        "x": 26,
+        "y": 66
+      },
+      {
+        "x": 24,
+        "y": 103
+      },
+      {
+        "x": 4,
+        "y": 109
+      },
+      {
+        "x": 21,
+        "y": 116
+      },
+      {
+        "x": 64,
+        "y": 69
+      },
+      {
+        "x": 91,
+        "y": 106
+      },
+      {
+        "x": 50,
+        "y": 111
+      },
+      {
+        "x": 74,
+        "y": 59
+      },
+      {
+        "x": 89,
+        "y": 26
+      },
+      {
+        "x": 60,
+        "y": 39
+      },
+      {
+        "x": 86,
+        "y": 106
+      },
+      {
+        "x": 41,
+        "y": 18
+      },
+      {
+        "x": 44,
+        "y": 114
+      },
+      {
+        "x": 71,
+        "y": 113
+      },
+      {
+        "x": 66,
+        "y": 31
+      },
+      {
+        "x": 62,
+        "y": 68
+      },
+      {
+        "x": 61,
+        "y": 96
+      },
+      {
+        "x": 30,
+        "y": 49
+      },
+      {
+        "x": 76,
+        "y": 0
+      },
+      {
+        "x": 19,
+        "y": 81
+      },
+      {
+        "x": 85,
+        "y": 25
+      },
+      {
+        "x": 86,
+        "y": 25
+      },
+      {
+        "x": 50,
+        "y": 98
+      },
+      {
+        "x": 13,
+        "y": 32
+      },
+      {
+        "x": 16,
+        "y": 118
+      },
+      {
+        "x": 5,
+        "y": 74
+      },
+      {
+        "x": 1,
+        "y": 7
+      },
+      {
+        "x": 7,
+        "y": 118
+      },
+      {
+        "x": 59,
+        "y": 65
+      },
+      {
+        "x": 74,
+        "y": 44
+      },
+      {
+        "x": 16,
+        "y": 4
+      },
+      {
+        "x": 88,
+        "y": 103
+      },
+      {
+        "x": 47,
+        "y": 21
+      },
+      {
+        "x": 49,
+        "y": 78
+      },
+      {
+        "x": 2,
+        "y": 42
+      },
+      {
+        "x": 73,
+        "y": 81
+      },
+      {
+        "x": 11,
+        "y": 50
+      },
+      {
+        "x": 90,
+        "y": 52
+      }
+    ]
   },
   {
-    "PC": "PC4",
-    "pca": 84,
-    "pcaColor": "hsl(291, 70%, 50%)"
+    "id": "group D",
+    "data": [
+      {
+        "x": 84,
+        "y": 109
+      },
+      {
+        "x": 92,
+        "y": 97
+      },
+      {
+        "x": 8,
+        "y": 79
+      },
+      {
+        "x": 64,
+        "y": 42
+      },
+      {
+        "x": 39,
+        "y": 40
+      },
+      {
+        "x": 19,
+        "y": 119
+      },
+      {
+        "x": 1,
+        "y": 34
+      },
+      {
+        "x": 90,
+        "y": 112
+      },
+      {
+        "x": 60,
+        "y": 85
+      },
+      {
+        "x": 78,
+        "y": 70
+      },
+      {
+        "x": 80,
+        "y": 18
+      },
+      {
+        "x": 89,
+        "y": 115
+      },
+      {
+        "x": 78,
+        "y": 17
+      },
+      {
+        "x": 87,
+        "y": 118
+      },
+      {
+        "x": 34,
+        "y": 31
+      },
+      {
+        "x": 26,
+        "y": 49
+      },
+      {
+        "x": 35,
+        "y": 70
+      },
+      {
+        "x": 93,
+        "y": 101
+      },
+      {
+        "x": 16,
+        "y": 107
+      },
+      {
+        "x": 37,
+        "y": 27
+      },
+      {
+        "x": 97,
+        "y": 75
+      },
+      {
+        "x": 60,
+        "y": 33
+      },
+      {
+        "x": 25,
+        "y": 79
+      },
+      {
+        "x": 73,
+        "y": 77
+      },
+      {
+        "x": 56,
+        "y": 47
+      },
+      {
+        "x": 74,
+        "y": 15
+      },
+      {
+        "x": 51,
+        "y": 29
+      },
+      {
+        "x": 88,
+        "y": 79
+      },
+      {
+        "x": 6,
+        "y": 47
+      },
+      {
+        "x": 78,
+        "y": 6
+      },
+      {
+        "x": 21,
+        "y": 110
+      },
+      {
+        "x": 88,
+        "y": 52
+      },
+      {
+        "x": 20,
+        "y": 77
+      },
+      {
+        "x": 15,
+        "y": 97
+      },
+      {
+        "x": 72,
+        "y": 78
+      },
+      {
+        "x": 45,
+        "y": 77
+      },
+      {
+        "x": 88,
+        "y": 39
+      },
+      {
+        "x": 57,
+        "y": 31
+      },
+      {
+        "x": 5,
+        "y": 28
+      },
+      {
+        "x": 81,
+        "y": 7
+      },
+      {
+        "x": 99,
+        "y": 9
+      },
+      {
+        "x": 9,
+        "y": 27
+      },
+      {
+        "x": 19,
+        "y": 90
+      },
+      {
+        "x": 3,
+        "y": 1
+      },
+      {
+        "x": 86,
+        "y": 68
+      },
+      {
+        "x": 56,
+        "y": 56
+      },
+      {
+        "x": 77,
+        "y": 117
+      },
+      {
+        "x": 98,
+        "y": 73
+      },
+      {
+        "x": 11,
+        "y": 81
+      },
+      {
+        "x": 14,
+        "y": 82
+      }
+    ]
   },
   {
-    "PC": "PC5",
-    "pca": 174,
-    "pcaColor": "hsl(344, 70%, 50%)"
-  },
-  {
-    "PC": "PC6",
-    "pca": 145,
-    "pcaColor": "hsl(284, 70%, 50%)"
-  },
-  {
-    "PC": "PC7",
-    "pca": 83,
-    "pcaColor": "hsl(304, 70%, 50%)"
+    "id": "group E",
+    "data": [
+      {
+        "x": 11,
+        "y": 60
+      },
+      {
+        "x": 44,
+        "y": 5
+      },
+      {
+        "x": 50,
+        "y": 99
+      },
+      {
+        "x": 17,
+        "y": 46
+      },
+      {
+        "x": 37,
+        "y": 47
+      },
+      {
+        "x": 1,
+        "y": 30
+      },
+      {
+        "x": 25,
+        "y": 69
+      },
+      {
+        "x": 17,
+        "y": 105
+      },
+      {
+        "x": 41,
+        "y": 85
+      },
+      {
+        "x": 23,
+        "y": 74
+      },
+      {
+        "x": 76,
+        "y": 55
+      },
+      {
+        "x": 2,
+        "y": 4
+      },
+      {
+        "x": 17,
+        "y": 48
+      },
+      {
+        "x": 63,
+        "y": 75
+      },
+      {
+        "x": 35,
+        "y": 99
+      },
+      {
+        "x": 30,
+        "y": 63
+      },
+      {
+        "x": 11,
+        "y": 3
+      },
+      {
+        "x": 96,
+        "y": 83
+      },
+      {
+        "x": 50,
+        "y": 26
+      },
+      {
+        "x": 96,
+        "y": 16
+      },
+      {
+        "x": 99,
+        "y": 109
+      },
+      {
+        "x": 30,
+        "y": 82
+      },
+      {
+        "x": 32,
+        "y": 81
+      },
+      {
+        "x": 13,
+        "y": 78
+      },
+      {
+        "x": 52,
+        "y": 62
+      },
+      {
+        "x": 24,
+        "y": 50
+      },
+      {
+        "x": 9,
+        "y": 86
+      },
+      {
+        "x": 8,
+        "y": 80
+      },
+      {
+        "x": 61,
+        "y": 69
+      },
+      {
+        "x": 5,
+        "y": 2
+      },
+      {
+        "x": 38,
+        "y": 58
+      },
+      {
+        "x": 59,
+        "y": 113
+      },
+      {
+        "x": 22,
+        "y": 116
+      },
+      {
+        "x": 71,
+        "y": 98
+      },
+      {
+        "x": 65,
+        "y": 50
+      },
+      {
+        "x": 95,
+        "y": 12
+      },
+      {
+        "x": 66,
+        "y": 54
+      },
+      {
+        "x": 26,
+        "y": 55
+      },
+      {
+        "x": 18,
+        "y": 8
+      },
+      {
+        "x": 31,
+        "y": 113
+      },
+      {
+        "x": 79,
+        "y": 5
+      },
+      {
+        "x": 68,
+        "y": 50
+      },
+      {
+        "x": 29,
+        "y": 54
+      },
+      {
+        "x": 52,
+        "y": 72
+      },
+      {
+        "x": 9,
+        "y": 20
+      },
+      {
+        "x": 36,
+        "y": 73
+      },
+      {
+        "x": 95,
+        "y": 95
+      },
+      {
+        "x": 13,
+        "y": 120
+      },
+      {
+        "x": 57,
+        "y": 20
+      },
+      {
+        "x": 42,
+        "y": 68
+      }
+    ]
   }
 ]
 
@@ -2900,9 +3892,15 @@ class Dashboard extends React.Component {
       : '';
   }
 
-  var() {
+  p_selected() {
     return this.props.auth && this.props.auth.analysis
-      ? this.props.auth.analysis.var
+      ? this.props.auth.analysis.p_selected
+      : '';
+  }
+
+  auc() {
+    return this.props.auth && this.props.auth.analysis
+      ? this.props.auth.analysis.auc
       : '';
   }
 
@@ -2963,17 +3961,15 @@ class Dashboard extends React.Component {
                 <CardIcon color="warning">
                   <Icon>content_copy</Icon>
                 </CardIcon>
-                <p className={classes.cardCategory}>Samples</p>
-                <h3 className={classes.cardTitle}>{this.n()}</h3>
+                <p className={classes.cardCategory}>Dimensions</p>
+                <h3 className={classes.cardTitle}>{`${this.n()} / ${this.p()}`}</h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <Danger>
                     <Warning />
                   </Danger>
-                  <a href="#pablo" onClick={e => e.preventDefault()}>
-                    Get more space
-                  </a>
+                  Samples/Variables
                 </div>
               </CardFooter>
             </Card>
@@ -2984,13 +3980,13 @@ class Dashboard extends React.Component {
                 <CardIcon color="success">
                   <Store />
                 </CardIcon>
-                <p className={classes.cardCategory}>Variables</p>
-                <h3 className={classes.cardTitle}>{this.p()}</h3>
+                <p className={classes.cardCategory}>Panel Size</p>
+                <h3 className={classes.cardTitle}>{this.p_selected()}</h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <DateRange />
-                  Last 24 Hours
+                  Number of variables selected
                 </div>
               </CardFooter>
             </Card>
@@ -3001,13 +3997,13 @@ class Dashboard extends React.Component {
                 <CardIcon color="danger">
                   <Icon>info_outline</Icon>
                 </CardIcon>
-                <p className={classes.cardCategory}>Prop. Var. Exp.</p>
-                <h3 className={classes.cardTitle}>{this.var()}</h3>
+                <p className={classes.cardCategory}>AUROC</p>
+                <h3 className={classes.cardTitle}>{this.auc()}</h3>
               </CardHeader>
               <CardFooter stats>
                 <div className={classes.stats}>
                   <LocalOffer />
-                  Tracked from Github
+                  Area under the ROC curve
                 </div>
               </CardFooter>
             </Card>
@@ -3036,90 +4032,70 @@ class Dashboard extends React.Component {
               <CardHeader color="nil">
               <div style={styles.App}>
                 {this.props.auth && this.props.auth.analysis ? (
-    <ResponsiveBar
-        data={bubbleData}
-        keys={[
-            "pca"
-        ]}
-        indexBy="PC"
-        margin={{
+<ResponsiveScatterPlot
+        data={scatterData}
+         margin={{
             "top": 10,
             "right": 90,
             "bottom": 40,
             "left": 50
         }}
-        padding={0.3}
-        colors="nivo"
-        colorBy="id"
-        defs={[
-            {
-                "id": "dots",
-                "type": "patternDots",
-                "background": "inherit",
-                "color": "#38bcb2",
-                "size": 4,
-                "padding": 1,
-                "stagger": true
-            }
-        ]}
-        fill={[
-            {
-                "match": {
-                    "id": "pca"
-                },
-                "id": "dots"
-            }
-        ]}
-        borderColor="inherit:darker(1.6)"
+        xScale={{
+            "type": "linear",
+            "min": 0,
+            "max": "auto"
+        }}
+        yScale={{
+            "type": "linear",
+            "min": 0,
+            "max": "auto"
+        }}
         axisTop={null}
         axisRight={null}
         axisBottom={{
+            "orient": "bottom",
             "tickSize": 5,
             "tickPadding": 5,
             "tickRotation": 0,
-            "legend": "PC",
+            "legend": "weight",
             "legendPosition": "middle",
-            "legendOffset": 32
+            "legendOffset": 46
         }}
         axisLeft={{
+            "orient": "left",
             "tickSize": 5,
             "tickPadding": 5,
             "tickRotation": 0,
-            "legend": "food",
+            "legend": "size",
             "legendPosition": "middle",
-            "legendOffset": -40
+            "legendOffset": -60
         }}
-        labelSkipWidth={12}
-        labelSkipHeight={12}
-        labelTextColor="inherit:darker(1.6)"
         animate={true}
         motionStiffness={90}
         motionDamping={15}
         legends={[
             {
-                "dataFrom": "keys",
                 "anchor": "bottom-right",
                 "direction": "column",
-                "justify": false,
-                "translateX": 120,
-                "translateY": 0,
-                "itemsSpacing": 2,
+                "translateX": 130,
                 "itemWidth": 100,
-                "itemHeight": 20,
-                "itemDirection": "left-to-right",
-                "itemOpacity": 0.85,
-                "symbolSize": 20,
+                "itemHeight": 12,
+                "itemsSpacing": 5,
+                "itemTextColor": "#999",
+                "symbolSize": 12,
+                "symbolShape": "circle",
                 "effects": [
                     {
                         "on": "hover",
                         "style": {
-                            "itemOpacity": 0
+                            "itemTextColor": "#000"
                         }
                     }
                 ]
             }
         ]}
-    /> ) : (
+    />
+) : (
                   <ChartistGraph
                     className="ct-chart"
                     data={dailySalesChart.data}
@@ -3148,17 +4124,17 @@ class Dashboard extends React.Component {
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
-              <CardHeader color="warning">
+              <CardHeader color="nil">
               <div style={styles.App}>
                 {/* Component plots */}
                 {this.props.auth && this.props.auth.analysis ? (
                   <ResponsiveLine
         data={lineData}
         margin={{
-            "top": 50,
-            "right": 110,
-            "bottom": 50,
-            "left": 60
+            "top": 10,
+            "right": 90,
+            "bottom": 40,
+            "left": 50
         }}
         xScale={{
             "type": "point"
@@ -3169,8 +4145,8 @@ class Dashboard extends React.Component {
             "min": "auto",
             "max": "auto"
         }}
-        axisTop=null
-        axisRight=null
+        axisTop={null}
+        axisRight={null}
         axisBottom={{
             "orient": "bottom",
             "tickSize": 5,
@@ -3280,7 +4256,7 @@ class Dashboard extends React.Component {
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
-              <CardHeader color="danger">
+              <CardHeader color="nil">
               <div style={styles.App}>
                 {this.props.auth && this.props.auth.analysis ? (
     <ResponsiveHeatMapCanvas
@@ -3345,10 +4321,10 @@ class Dashboard extends React.Component {
         ]}
         indexBy="country"
         margin={{
-            "top": 100,
-            "right": 60,
-            "bottom": 100,
-            "left": 60
+            "top": 10,
+            "right": 90,
+            "bottom": 40,
+            "left": 50
         }}
         pixelRatio={2}
         minValue="auto"

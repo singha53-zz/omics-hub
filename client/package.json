@@ -10,6 +10,7 @@
     "@nivo/circle-packing": "^0.51.0",
     "@nivo/heatmap": "^0.51.0",
     "@nivo/line": "^0.51.6",
+    "@nivo/scatterplot": "^0.51.3",
     "axios": "^0.18.0",
     "chartist": "^0.11.0",
     "classnames": "^2.2.6",
