@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
+const axios = require('axios');
 const crossValidation = require('ml-cross-validation');
 const KNN = require('ml-knn');
 const PCA = require('ml-pca');
@@ -21,6 +22,17 @@ module.exports = app => {
 
   app.post('/api/analyze', requireLogin, async (req, res) => {
 
+    console.log(req.body.exp)
+    const enet = await axios.post('http://localhost:8000/enet', {
+      "data": JSON.parse(req.body.exp),
+      "outcome": JSON.parse(req.body.labels),
+      "key": "pwd"
+    }).catch(err => {
+      console.log(err)
+    })
+    console.log(enet)
+
+
 
     let analysis = {}
     // Analyze expression data and store results
@@ -30,6 +42,7 @@ module.exports = app => {
     const X = datasetKeys.map(i => JSON.parse(req.body.exp)[i]).map(x => x.map(d => +d))
     // Format response data
     const y = JSON.parse(req.body.labels).map(d => +d)
+    // console.log(X, y)
 
     // Number of samples
     analysis.n = X.length
@@ -75,7 +88,7 @@ module.exports = app => {
     const confusionMatrix = crossValidation.leaveOneOut(KNN, X, y);
     analysis.confusionMatrix = confusionMatrix.matrix
     analysis.accuracy = Math.round(100*(confusionMatrix.getAccuracy()))+'%';
-    console.log(analysis)
+    // console.log(analysis)
     
     req.user.analysis = analysis
     const user = await req.user.save()
