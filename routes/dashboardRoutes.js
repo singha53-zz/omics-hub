@@ -22,10 +22,12 @@ module.exports = app => {
 
   app.post('/api/analyze', requireLogin, async (req, res) => {
 
-    console.log(req.body.exp)
+    // console.log(req.body.exp)
+    const labels = JSON.parse(req.body.labels).map(d=>d.outcome)
+    console.log(typeof(labels))
     const enet = await axios.post('http://localhost:8000/enet', {
       "data": JSON.parse(req.body.exp),
-      "outcome": JSON.parse(req.body.labels),
+      "outcome": labels,
       "key": "pwd"
     }).catch(err => {
       console.log(err)

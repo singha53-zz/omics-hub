@@ -12,7 +12,9 @@ var MONGODB_URI = process.env.MONGODB_URI || keys.mongoURI;
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 const app = express();
-app.use(bodyParser.json())
+// app.use(bodyParser.json())
+app.use(bodyParser.json({limit: '10mb', extended: true}))
+app.use(bodyParser.urlencoded({limit: '10mb', extended: true}))
 
 // make use of cookies in app
 app.use(

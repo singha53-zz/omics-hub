@@ -8,6 +8,7 @@
     "@material-ui/icons": "^3.0.1",
     "@nivo/bar": "^0.51.6",
     "@nivo/circle-packing": "^0.51.0",
+    "@nivo/heatmap": "^0.51.0",
     "axios": "^0.18.0",
     "chartist": "^0.11.0",
     "classnames": "^2.2.6",
