@@ -382,6 +382,7 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader color="warning">
+              <div style={styles.App}>
                 {/* Component plots */}
                 {this.props.auth && this.props.auth.analysis ? (
                   <Plot
@@ -421,6 +422,7 @@ class Dashboard extends React.Component {
                     listener={emailsSubscriptionChart.animation}
                   />
                 )}
+                </div>
               </CardHeader>
               <CardBody>
                 <h4 className={classes.cardTitle}>Email Subscriptions</h4>
@@ -438,6 +440,7 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader color="danger">
+              <div style={styles.App}>
                 {this.props.auth && this.props.auth.analysis ? (
                   <Plot
                     data={[
@@ -467,6 +470,7 @@ class Dashboard extends React.Component {
                     listener={completedTasksChart.animation}
                   />
                 )}
+                </div>
               </CardHeader>
               <CardBody>
                 <h4 className={classes.cardTitle}>Completed Tasks</h4>

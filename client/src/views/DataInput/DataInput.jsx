@@ -151,31 +151,6 @@ const DataInput = ({ submitDataForm, history }) => {
     <FormComp onSubmit={data => {
       submitDataForm(data, history)
     }} />
-    <div style={styles.App}>
-<ResponsiveBar
-  margin={{
-    top: 60,
-    right: 80,
-    bottom: 60,
-    left: 80
-  }}
-  data={bubbleData}
-  indexBy="country"
-  keys={[
-    'hot dogs',
-    'burgers',
-    'sandwich',
-    'kebab',
-    'fries',
-    'donut'
-  ]}
-  padding={0.2}
-  labelTextColor="inherit:darker(1.4)"
-  labelSkipWidth={16}
-  labelSkipHeight={16}
-  groupMode="grouped"
-/>
-</div>
     </div>
     )
 }
