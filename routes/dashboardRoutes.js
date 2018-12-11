@@ -48,11 +48,12 @@ module.exports = app => {
     // Sensitivity/Specificity
     analysis.perf = enet.data.perf[0].toString()
     // data for pca plot 
-    analysis.scatterData = enet.data.scatterData[0].toString()
-    console.log(enet.data.scatterData)
-    enet.data.scatterData[0].id.toString()
-    enet.data.scatterData[1].id.toString()
-    console.log(enet.data.scatterData)
+    analysis.scatterData = enet.data.scatterData
+    // console.log(enet.data.scatterData)
+    // enet.data.scatterData[0].id.toString()
+    // enet.data.scatterData[1].id.toString()
+    console.log(analysis.scatterData)
+    console.log(analysis.scatterData[0])
 
 //     // Analyze expression data and store results
 //     // Format explanatory data

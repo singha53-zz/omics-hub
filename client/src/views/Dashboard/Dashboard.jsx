@@ -4042,10 +4042,14 @@ class Dashboard extends React.Component {
           <GridItem xs={12} sm={12} md={4}>
             <Card chart>
               <CardHeader color="nil">
+              {/* {this.props.auth && this.props.auth.analysis.scatterData}
+              {console.log(scatterData)} */}
               <div style={styles.App}>
                 {this.props.auth && this.props.auth.analysis ? (
+                  console.log(typeof(scatterData)),
+                  console.log(typeof(this.scatterData())),
 <ResponsiveScatterPlot
-        data={scatterData}
+        data={this.scatterData()}
          margin={{
             "top": 10,
             "right": 90,
@@ -4054,12 +4058,12 @@ class Dashboard extends React.Component {
         }}
         xScale={{
             "type": "linear",
-            "min": 0,
+            "min": "auto",
             "max": "auto"
         }}
         yScale={{
             "type": "linear",
-            "min": 0,
+            "min": "auto",
             "max": "auto"
         }}
         axisTop={null}
