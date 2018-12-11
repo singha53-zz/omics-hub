@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Plot from 'react-plotly.js';
 // react plugin for creating charts
 import ChartistGraph from 'react-chartist';
 // @material-ui/core
