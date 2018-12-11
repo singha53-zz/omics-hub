@@ -25,7 +25,7 @@ module.exports = app => {
     const enet = await axios.post(keys.rAPI, {
       "data": JSON.parse(req.body.exp),
       "outcome": labels,
-      "key": "pwd"
+      "key": keys.rApiKey
     }).catch(err => {
       console.log(err)
     })
