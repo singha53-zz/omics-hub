@@ -19,6 +19,13 @@ import UpgradeToPro from "views/UpgradeToPro/UpgradeToPro.jsx";
 
 const dashboardRoutes = [
   {
+    path: "/user",
+    sidebarName: "User Profile",
+    navbarName: "Profile",
+    icon: Person,
+    component: UserProfile
+  },
+  {
     path: "/data",
     sidebarName: "DataInput",
     navbarName: "Data Input",
@@ -33,30 +40,23 @@ const dashboardRoutes = [
     component: DashboardPage
   },
   {
-    path: "/user",
-    sidebarName: "User Profile",
-    navbarName: "Profile",
-    icon: Person,
-    component: UserProfile
-  },
-  {
     path: "/table",
-    sidebarName: "Table List",
-    navbarName: "Table List",
+    sidebarName: "Pathway Analysis",
+    navbarName: "Pathway Analysis",
     icon: "content_paste",
     component: TableList
   },
   {
     path: "/typography",
-    sidebarName: "Typography",
-    navbarName: "Typography",
+    sidebarName: "Literature Search",
+    navbarName: "Literature Search",
     icon: LibraryBooks,
     component: Typography
   },
   {
     path: "/icons",
-    sidebarName: "Icons",
-    navbarName: "Icons",
+    sidebarName: "Network Analysis",
+    navbarName: "Network Analysis",
     icon: BubbleChart,
     component: Icons
   },

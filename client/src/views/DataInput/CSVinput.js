@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CSVReader from 'react-csv-reader';
+import Papa from 'papaparse';
 
 class Csv extends Component {
   err = e => {
@@ -15,6 +16,9 @@ class Csv extends Component {
         cssClass="csv-input"
         onFileLoaded={e => {
           onChange(value.concat(JSON.stringify(e)));
+        }}
+        parserOptions={{
+          header: true
         }}
         onError={this.err}
         inputId="exp"
