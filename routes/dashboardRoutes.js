@@ -22,7 +22,7 @@ console.log(keys)
     // console.log(dataset.map(d => +d[0]))
     const labels = JSON.parse(req.body.labels).map(d=>d.outcome)
     console.log(labels)
-    const enet = await axios.post(process.env.R_API ||keys.rAPI, {
+    const enet = await axios.post(`${process.env.R_API}/enet` || `${keys.rAPI}/enet`, {
       "data": JSON.parse(req.body.exp),
       "outcome": labels,
       "key": process.env.R_API_KEY || keys.rApiKey
