@@ -1,12 +1,7 @@
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const axios = require('axios');
-const crossValidation = require('ml-cross-validation');
-const KNN = require('ml-knn');
-const PCA = require('ml-pca');
-const ConfusionMatrix = require('ml-confusion-matrix');
-const { Matrix } = require('ml-matrix');
-const _ = require('underscore')
+const keys = require('../config/keys');
 
 function subsetArr(labels, group) {
   let indices = [];
@@ -27,7 +22,7 @@ module.exports = app => {
     // console.log(dataset.map(d => +d[0]))
     const labels = JSON.parse(req.body.labels).map(d=>d.outcome)
     console.log(labels)
-    const enet = await axios.post('http://localhost:8000/enet', {
+    const enet = await axios.post(keys.rAPI, {
       "data": JSON.parse(req.body.exp),
       "outcome": labels,
       "key": "pwd"
