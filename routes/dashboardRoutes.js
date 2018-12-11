@@ -16,16 +16,16 @@ function subsetArr(labels, group) {
 module.exports = app => {
 
   app.post('/api/analyze', requireLogin, async (req, res) => {
-
+console.log(keys)
     // console.log(req.body.exp)
     // const dataset = req.body.exp
     // console.log(dataset.map(d => +d[0]))
     const labels = JSON.parse(req.body.labels).map(d=>d.outcome)
     console.log(labels)
-    const enet = await axios.post(keys.rAPI, {
+    const enet = await axios.post(process.env.R_API ||keys.rAPI, {
       "data": JSON.parse(req.body.exp),
       "outcome": labels,
-      "key": keys.rApiKey
+      "key": process.env.R_API_KEY || keys.rApiKey
     }).catch(err => {
       console.log(err)
     })

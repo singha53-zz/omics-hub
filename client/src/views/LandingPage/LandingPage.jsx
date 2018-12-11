@@ -87,6 +87,7 @@ class LandingPage extends React.Component {
                 >
                   <i className="fas fa-table" />Analyze my data
                 </Button>
+                <p>Site under development...</p>
               </GridItem>
             </GridContainer>
           </div>
